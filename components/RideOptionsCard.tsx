@@ -4,6 +4,8 @@ import { useState } from 'react';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { selectTravelTimeInformation } from '../slices/navSlice';
 
 interface PropsSelected {
     id: string;
@@ -37,6 +39,7 @@ const RideOptionsCard = () => {
 
     const navigation = useNavigation();
     const [selected, setSelected] = useState<PropsSelected | null>(null);
+    const travelTimeInformation = useSelector(selectTravelTimeInformation);
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -46,7 +49,7 @@ const RideOptionsCard = () => {
             style={tw`absolute top-3 left-5 z-50 p-3 rounded-full`}>
               <Icon name="chevron-left" type="fontawesome" />
           </TouchableOpacity>
-        <Text style={tw`text-center py-5 text-xl`}>Selecione o passeio</Text>
+        <Text style={tw`text-center py-5 text-xl`}>Selecione o passeio - {travelTimeInformation?.distance.text}</Text>
       </View>
 
       <FlatList 
@@ -66,7 +69,7 @@ const RideOptionsCard = () => {
                 />
                 <View style={tw`-ml-6`}>
                     <Text style={tw`text-xl font-semibold`}>{title}</Text>
-                    <Text>Tempo de viagem...</Text>
+                    <Text>{travelTimeInformation?.duration.text} de Dist.</Text>
                 </View>
                 <Text style={tw`text-xl`}>$99</Text>
             </TouchableOpacity>
