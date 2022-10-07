@@ -29,7 +29,7 @@ const Map = () => {
         if(!origin || !destination) return;
 
          const getTravelTime = () => {
-             fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_APIKEY}`)
+             fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&language=pt-BR&key=${GOOGLE_MAPS_APIKEY}`)
              .then(res => res.json())
              .then(data => {
                 console.warn('data', data)

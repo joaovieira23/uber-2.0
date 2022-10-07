@@ -33,7 +33,9 @@ const data = [
         multiplier: 1.75,
         image: "https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_485,h_385/f_auto,q_auto/products/carousel/Lux.png"
     }
-]
+];
+
+const SURGE_CHARGE_RATE = 1.5;
 
 const RideOptionsCard = () => {
 
@@ -71,12 +73,22 @@ const RideOptionsCard = () => {
                     <Text style={tw`text-xl font-semibold`}>{title}</Text>
                     <Text>{travelTimeInformation?.duration.text} de Dist.</Text>
                 </View>
-                <Text style={tw`text-xl`}>$99</Text>
+                <Text style={tw`text-xl`}>
+                    {
+                        new Intl.NumberFormat('pt-PT', {
+                            style: 'currency',
+                            currency: 'BRL',
+                            minimumFractionDigits: 2
+                        }).format(
+                            (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier) / 100
+                        )
+                    }
+                </Text>
             </TouchableOpacity>
         )}
       />
 
-      <View>
+      <View style={tw`mt-auto border-t border-gray-200`}>
           <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && 'bg-gray-300'}`}>
               <Text style={tw`text-center text-white text-xl`}>Escolher {selected?.title}</Text>
           </TouchableOpacity>
