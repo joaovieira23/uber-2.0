@@ -1,6 +1,8 @@
 import { StyleSheet, Image, View, SafeAreaView } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
+
 import NavOptions from '../components/NavOptions';
+import NavFavourites from '../components/NavFavourites';
 
 import { GOOGLE_MAPS_APIKEY } from '@env';
 
@@ -55,6 +57,7 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   )

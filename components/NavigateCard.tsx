@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { setDestination } from '../slices/navSlice';
 import { useNavigation } from '@react-navigation/native';
+import NavFavourites from './NavFavourites';
 
 const NavigateCard = () => {
 
@@ -18,7 +19,7 @@ const NavigateCard = () => {
       <View style={tw`border-t border-gray-200 flex-shrink`}>
       <View>
             <GooglePlacesAutocomplete 
-                placeholder='Local de partida'
+                placeholder='Destino'
                 styles={toInputBoxStyles}
                 fetchDetails={true}
                 returnKeyType={"search"}
@@ -26,9 +27,9 @@ const NavigateCard = () => {
                 onPress={(data, details = null) => {
                     dispatch(setDestination({
                         location: details?.geometry.location,
-                        desciption: data.description
+                        description: data.description
                     }));
-
+                    
                     navigation.navigate('RideOptionsCard' as never)
                 }}
                 enablePoweredByContainer={false}
@@ -40,6 +41,8 @@ const NavigateCard = () => {
                 debounce={400}
             />
         </View>
+
+        <NavFavourites />
       </View>
     </SafeAreaView>
   )
