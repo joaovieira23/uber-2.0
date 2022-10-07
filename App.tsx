@@ -7,7 +7,7 @@ import MapScreen from './screens/MapScreen';
 
 import { store } from './store';
 
-// import 'react-native-gesture-handler';  
+import 'react-native-gesture-handler';  
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -38,7 +38,6 @@ export default function App() {
               }}
             />
           </Stack.Navigator>
-          <HomeScreen />
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
