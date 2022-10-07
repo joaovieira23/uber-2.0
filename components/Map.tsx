@@ -24,6 +24,7 @@ const Map = () => {
         });
     }, [origin, destination]);
 
+
   return (
     <MapView
         ref={mapRef}
